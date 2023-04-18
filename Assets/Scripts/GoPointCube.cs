@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoPointCube : MonoBehaviour, GoPoint
+public class GoPointCube : MonoBehaviour, IGoPoint
 {
     [SerializeField]
     private List<Vector3> goPoints;
