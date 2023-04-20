@@ -19,19 +19,19 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    List<IGoPoint> GetAllGoPoints() 
-    {
-        var res =  new List<IGoPoint>();
-        var platforms = GameObject.FindGameObjectsWithTag("Platform");
-        foreach (var item in platforms)
-        {
-            res.Add(item.GetComponent<GoPointCube>());
-        }
-        var ramps = GameObject.FindGameObjectsWithTag("Ramp");
-        foreach (var item in ramps)
-        {
-            res.Add(item.GetComponent<GoPointRamp>());
-        }
-        return res;
-    }
+    /* List<IGoPoint> GetAllGoPoints() */ 
+    /* { */
+    /*     var res =  new List<IGoPoint>(); */
+    /*     var platforms = GameObject.FindGameObjectsWithTag("Platform"); */
+    /*     foreach (var item in platforms) */
+    /*     { */
+    /*         res.Add(item.GetComponent<GoPointCube>()); */
+    /*     } */
+    /*     var ramps = GameObject.FindGameObjectsWithTag("Ramp"); */
+    /*     foreach (var item in ramps) */
+    /*     { */
+    /*         res.Add(item.GetComponent<GoPointRamp>()); */
+    /*     } */
+    /*     return res; */
+    /* } */
 }
