@@ -28,20 +28,22 @@ public class GenerateMap : MonoBehaviour
 
         for (uint i = 0; i < spawnPlatformCount; i++)
         {
-            var included = IncludePlatform();
-            if (!CollidesWithPlaced(included))
-            {
-                platforms.Add(included);
-            }
+            /* var included = IncludePlatform(); */
+            /* if (!CollidesWithPlaced(included)) */
+            /* { */
+            /*     platforms.Add(included); */
+            /* } */
         }
     }
 
-    ColliderData IncludePlatform()
+    void IncludePlatform()
     {
         var sizeX = Random.Range(platformSpawnSizeMin.x, platformSpawnSizeMax.x);
         var sizeY = Random.Range(platformSpawnSizeMin.y, platformSpawnSizeMax.y);
         var locationX = Random.Range(-bounds.x, bounds.x);
         var locationY = Random.Range(-bounds.y, bounds.y);
+
+        
     }
 
     bool CollidesWithPlaced(ColliderData data)
