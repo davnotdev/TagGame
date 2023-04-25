@@ -42,8 +42,6 @@ public class GenerateMap : MonoBehaviour
         var sizeY = Random.Range(platformSpawnSizeMin.y, platformSpawnSizeMax.y);
         var locationX = Random.Range(-bounds.x, bounds.x);
         var locationY = Random.Range(-bounds.y, bounds.y);
-
-        
     }
 
     bool CollidesWithPlaced(ColliderData data)
