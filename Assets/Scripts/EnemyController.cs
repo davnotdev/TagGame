@@ -1,37 +1,26 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
     public float speed = 0.5f;
-    private Vector3 gotoPoint;
+    public Transform gotoHere;
+
+    private NavMeshAgent navAgent;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    List<IGoPoint> GetAllGoPoints() 
-    {
-        var res =  new List<IGoPoint>();
-        var platforms = GameObject.FindGameObjectsWithTag("Platform");
-        foreach (var item in platforms)
-        {
-            res.Add(item.GetComponent<GoPointCube>());
-        }
-        var ramps = GameObject.FindGameObjectsWithTag("Ramp");
-        foreach (var item in ramps)
-        {
-            res.Add(item.GetComponent<GoPointRamp>());
-        }
-        return res;
+        navAgent.speed = speed;
+        navAgent.SetDestination(gotoHere.transform.position + Vector3.up);
     }
 }
