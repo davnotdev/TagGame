@@ -15,7 +15,10 @@ public class FirstPersonMovement : MonoBehaviour
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
-
+    private void Update()
+    {
+            //check if power-ups
+    }
 
     void Awake()
     {
