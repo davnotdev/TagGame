@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +29,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            /* Debug.Log("Not it!"); */
+            //  TODO: Very naive implementation.
+            navAgent.SetDestination(transform.position - (tagManager.GetWhoIsIt().transform.position - transform.position).normalized);
         }
     }
 

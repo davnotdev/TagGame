@@ -24,6 +24,7 @@ public class Taggable : MonoBehaviour
 
     public void TagYouAreIt()
     {
+        tagManager.SetWhoIsIt(gameObject);
         StartCoroutine(TagCooldown());
     }
 
