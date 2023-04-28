@@ -7,11 +7,10 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float speed = 0.5f;
-    public Transform chaseThis;
+    public TagManager tagManager;
 
     private NavMeshAgent navAgent;
     private Taggable taggable;
-    private TagManager tagManager;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +25,12 @@ public class EnemyController : MonoBehaviour
         if (taggable.GetCanTag())
         {
             navAgent.speed = speed;
-            navAgent.SetDestination(chaseThis.transform.position + Vector3.up);
+            var closest = tagManager.FindNearestPlayer(transform);
+            navAgent.SetDestination(closest.position + Vector3.up);
         }
         else
         {
-            
+            /* Debug.Log("Not it!"); */
         }
     }
 

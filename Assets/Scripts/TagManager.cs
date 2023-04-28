@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class TagManager : MonoBehaviour
 {
+    [SerializeField]
     List<GameObject> players;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        foreach (var obj in FindObjectsOfType<Taggable>()) {
+            players.Add(obj.gameObject);
+        }
+        
+        //  TODO: Replace this.
+        players[0].GetComponent<Taggable>().TagYouAreIt();
     }
 
     // Update is called once per frame

@@ -5,7 +5,9 @@ using UnityEngine;
 public class Taggable : MonoBehaviour
 {
     public TagManager tagManager;
-    private float noTagPeriod = 5.0f;
+    private float noTagPeriod = 1.0f;
+
+    [SerializeField]
     private bool canTag = false;
 
     // Start is called before the first frame update
@@ -20,15 +22,15 @@ public class Taggable : MonoBehaviour
 
     }
 
-    void TagYouAreIt()
+    public void TagYouAreIt()
     {
         StartCoroutine(TagCooldown());
-        canTag = true;
     }
 
     IEnumerator TagCooldown()
     {
         yield return new WaitForSeconds(noTagPeriod);
+        canTag = true;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -37,8 +39,8 @@ public class Taggable : MonoBehaviour
         if (canTag && (other = collision.gameObject.GetComponent<Taggable>()))
         {
             other.TagYouAreIt();
+            canTag = false;
         }
-        canTag = false;
     }
 
     public bool GetCanTag()
