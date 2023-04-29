@@ -6,14 +6,15 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float speed = 0.5f;
-    public TagManager tagManager;
 
     private NavMeshAgent navAgent;
     private Taggable taggable;
+    private TagManager tagManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        tagManager = TagManager.GetTagManager();
         navAgent = GetComponent<NavMeshAgent>();
         taggable = GetComponent<Taggable>();
     }

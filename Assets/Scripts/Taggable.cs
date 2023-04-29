@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Taggable : MonoBehaviour
 {
-    public TagManager tagManager;
     private float noTagPeriod = 1.0f;
 
     [SerializeField]
     private bool canTag = false;
+    private TagManager tagManager;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        tagManager = TagManager.GetTagManager();
     }
 
     // Update is called once per frame

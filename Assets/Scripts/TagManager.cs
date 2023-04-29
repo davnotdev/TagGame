@@ -62,4 +62,8 @@ public class TagManager : MonoBehaviour
     {
         return whoIsIt;
     }
+
+    public static TagManager GetTagManager() {
+        return GameObject.Find("TagManager").GetComponent<TagManager>();
+    }
 }
