@@ -39,8 +39,8 @@ public class Taggable : MonoBehaviour
         Taggable other;
         if (canTag && (other = collision.gameObject.GetComponent<Taggable>()))
         {
-            other.TagYouAreIt();
             canTag = false;
+            other.TagYouAreIt();
         }
     }
 
