@@ -4,12 +4,16 @@ using UnityEngine;
 public class FirstPersonMovement : MonoBehaviour
 {
     public float speed = 5;
+    public float speedIncrease = 5;
+    public bool speedPowerUp = false;
+    public float speedCooldown = 5;
 
     [Header("Running")]
     public bool canRun = true;
     public bool IsRunning { get; private set; }
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
+    
 
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
@@ -17,7 +21,23 @@ public class FirstPersonMovement : MonoBehaviour
 
     private void Update()
     {
-            //check if power-ups
+            
+    }
+    //speedPowerUp goes brrr
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Powerup"))
+        {
+            speedPowerUp = true;
+            Destroy(other.gameObject);
+            speed += speedIncrease;
+            //StartCoroutine(SpeedPowerUpCountdownRoutine());
+        }
+        /*IEnumerator SpeedPowerUpCountdownRoutine()
+        {
+            yield return new WaitForSeconds(speedCooldown);
+            speed -= speedIncrease;
+        }*/
     }
 
     void Awake()

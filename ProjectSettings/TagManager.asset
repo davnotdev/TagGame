@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Ramp
+  - Powerup
   layers:
   - Default
   - TransparentFX
