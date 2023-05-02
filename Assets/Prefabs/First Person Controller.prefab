@@ -431,6 +431,8 @@ GameObject:
   - component: {fileID: 4203385639598843834}
   - component: {fileID: 4205171582627258946}
   - component: {fileID: 4204872257623146088}
+  - component: {fileID: 734488208526184376}
+  - component: {fileID: -8979350050966474538}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Untagged
@@ -500,6 +502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  speedIncrease: 5
+  speedPowerUp: 0
+  speedCooldown: 5
   canRun: 1
   runSpeed: 9
   runningKey: 304
@@ -535,6 +540,31 @@ MonoBehaviour:
   headToLower: {fileID: 4306269930217503342}
   crouchYHeadPosition: 1
   colliderToLower: {fileID: 4191525845698578484}
+--- !u!114 &734488208526184376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308624792829773350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf577795742cd412d956e176e0492a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8979350050966474538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308624792829773350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886ce4e0eb991ff7d973bf4920095cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canTag: 0
 --- !u!1 &4309103107945233215
 GameObject:
   m_ObjectHideFlags: 0

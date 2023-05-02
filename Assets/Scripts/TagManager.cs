@@ -19,7 +19,7 @@ public class TagManager : MonoBehaviour
 
         //  TODO: Replace this.
         SetWhoIsIt(players[0]);
-        whoIsIt.GetComponent<Taggable>().TagYouAreIt();
+        whoIsIt.GetComponent<Taggable>().TagYouAreIt(gameObject);
     }
 
     // Update is called once per frame
