@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class FirstPersonMovement : MonoBehaviour
 {
@@ -31,13 +33,15 @@ public class FirstPersonMovement : MonoBehaviour
             speedPowerUp = true;
             Destroy(other.gameObject);
             speed += speedIncrease;
-            //StartCoroutine(SpeedPowerUpCountdownRoutine());
+            StartCoroutine(SpeedPowerUpCountdownRoutine());
         }
-        /*IEnumerator SpeedPowerUpCountdownRoutine()
-        {
-            yield return new WaitForSeconds(speedCooldown);
-            speed -= speedIncrease;
-        }*/
+        
+    }
+    IEnumerator SpeedPowerUpCountdownRoutine()
+    {
+        yield return new WaitForSeconds(speedCooldown);
+        speed -= speedIncrease;
+        speedPowerUp = false;
     }
 
     void Awake()
