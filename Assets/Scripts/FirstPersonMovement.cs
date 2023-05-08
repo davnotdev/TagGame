@@ -17,6 +17,7 @@ public class FirstPersonMovement : MonoBehaviour
     public AudioClip shieldPowerupSound;
     public AudioClip speedPowerupSound;
     private AudioSource source;
+    public GameObject speedIndicator;
 
     [Header("Running")]
     public bool canRun = true;
