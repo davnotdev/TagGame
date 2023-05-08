@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,8 @@ public class FirstPersonMovement : MonoBehaviour
     public float speedIncrease = 5;
     public bool speedPowerUp = false;
     public float speedCooldown = 5;
+    public AudioClip shieldpowerupSound;
+    public AudioClip speedpowerupSound;
 
     [Header("Running")]
     public bool canRun = true;
