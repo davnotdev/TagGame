@@ -1306,6 +1306,13 @@ PrefabInstance:
       propertyPath: key
       value: 0
       objectReference: {fileID: 0}
+      propertyPath: speedpowerupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95ace41062e4e4babb8a4c5815f68605, type: 3}
+    - target: {fileID: 4203385639598843834, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
+      propertyPath: shieldpowerupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95ace41062e4e4babb8a4c5815f68605, type: 3}
     - target: {fileID: 4255075504154281728, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
       propertyPath: m_Constraints
       value: 80

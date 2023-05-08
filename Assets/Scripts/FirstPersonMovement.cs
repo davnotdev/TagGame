@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,8 @@ public class FirstPersonMovement : MonoBehaviour
     public GameObject speedIndicator;
     public GameObject shieldIndicator;
     public GameObject ItIndicator;
+    public AudioClip shieldpowerupSound;
+    public AudioClip speedpowerupSound;
 
     [Header("Running")]
     public bool canRun = true;
