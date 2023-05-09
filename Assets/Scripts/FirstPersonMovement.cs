@@ -9,6 +9,7 @@ public class FirstPersonMovement : MonoBehaviour
     public float speedIncrease = 5;
     public bool speedPowerUp = false;
     public float speedCooldown = 5;
+    public GameObject speedIndicator;
 
     [Header("Running")]
     public bool canRun = true;
@@ -33,6 +34,7 @@ public class FirstPersonMovement : MonoBehaviour
             speedPowerUp = true;
             Destroy(other.gameObject);
             speed += speedIncrease;
+            speedIndicator.gameObject.SetActive(true);
             StartCoroutine(SpeedPowerUpCountdownRoutine());
         }
         
@@ -42,6 +44,7 @@ public class FirstPersonMovement : MonoBehaviour
         yield return new WaitForSeconds(speedCooldown);
         speed -= speedIncrease;
         speedPowerUp = false;
+        speedIndicator.gameObject.SetActive(false);
     }
 
     void Awake()
