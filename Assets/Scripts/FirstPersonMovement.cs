@@ -9,8 +9,9 @@ public class FirstPersonMovement : MonoBehaviour
     public float speedIncrease = 5;
     public bool speedPowerUp = false;
     public float speedCooldown = 5;
-    public AudioClip shieldpowerupSound;
-    public AudioClip speedpowerupSound;
+    public AudioClip shieldPowerupSound;
+    public AudioClip speedPowerupSound;
+    private AudioSource source;
 
     [Header("Running")]
     public bool canRun = true;
@@ -36,9 +37,18 @@ public class FirstPersonMovement : MonoBehaviour
             Destroy(other.gameObject);
             speed += speedIncrease;
             StartCoroutine(SpeedPowerUpCountdownRoutine());
+            source.PlayOneShot(speedPowerupSound);
         }
-        
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            source.PlayOneShot(shieldPowerupSound);
+        }
+    }
+
     IEnumerator SpeedPowerUpCountdownRoutine()
     {
         yield return new WaitForSeconds(speedCooldown);
@@ -50,6 +60,7 @@ public class FirstPersonMovement : MonoBehaviour
     {
         // Get the rigidbody on this.
         rigidbody = GetComponent<Rigidbody>();
+        source = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
