@@ -10,6 +10,8 @@ public class FirstPersonMovement : MonoBehaviour
     public bool speedPowerUp = false;
     public float speedCooldown = 5;
     public GameObject speedIndicator;
+    public GameObject shieldIndicator;
+    public GameObject ItIndicator;
 
     [Header("Running")]
     public bool canRun = true;
@@ -22,6 +24,10 @@ public class FirstPersonMovement : MonoBehaviour
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
+    private void Start()
+    {
+        speedIndicator.gameObject.SetActive(false);
+    }
     private void Update()
     {
             
@@ -29,7 +35,7 @@ public class FirstPersonMovement : MonoBehaviour
     //speedPowerUp goes brrr
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Powerup"))
+        if (other.CompareTag("Powerup") && speedPowerUp == false)
         {
             speedPowerUp = true;
             Destroy(other.gameObject);
