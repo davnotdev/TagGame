@@ -1430,6 +1430,25 @@ PrefabInstance:
       propertyPath: shieldpowerupSound
       value: 
       objectReference: {fileID: 8300000, guid: 95ace41062e4e4babb8a4c5815f68605, type: 3}
+      propertyPath: canRun
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203385639598843834, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
+      propertyPath: ItIndicator
+      value: 
+      objectReference: {fileID: 40165115}
+    - target: {fileID: 4203385639598843834, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
+      propertyPath: speedIndicator
+      value: 
+      objectReference: {fileID: 84795326}
+    - target: {fileID: 4203385639598843834, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
+      propertyPath: shieldIndicator
+      value: 
+      objectReference: {fileID: 1907578838}
+    - target: {fileID: 4204872257623146088, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
+      propertyPath: key
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4255075504154281728, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
       propertyPath: m_Constraints
       value: 80
