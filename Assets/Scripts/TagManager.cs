@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class TagManager : MonoBehaviour
 {
@@ -9,17 +10,12 @@ public class TagManager : MonoBehaviour
     [SerializeField]
     List<GameObject> players;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Begin() 
     {
         foreach (var obj in FindObjectsOfType<Taggable>())
         {
             players.Add(obj.gameObject);
         }
-
-        //  TODO: Replace this.
-        SetWhoIsIt(players[0]);
-        whoIsIt.GetComponent<Taggable>().TagYouAreIt(gameObject);
     }
 
     // Update is called once per frame
@@ -30,23 +26,23 @@ public class TagManager : MonoBehaviour
 
     public Transform FindNearestPlayer(Transform transform)
     {
-        const float yFactor = 0.25f;
-        //  TODO: Replace this to [0] later.
-        Transform closest = players[1].transform;
-        float minDistance = 9999999.0f;
+        const float yFactor = 1.0f;
+        Transform closest = null;
+        float minDistance = Mathf.Infinity;
         foreach (var player in players)
         {
-            if (player.name != whoIsIt.name)
+            if (player.GetInstanceID() != whoIsIt.GetInstanceID())
             {
                 var biasedPlayerPosition = new Vector3(
                     player.transform.position.x,
                     player.transform.position.y * yFactor,
                     player.transform.position.z
                 );
-                var distance = Vector3.Distance(biasedPlayerPosition, closest.position);
+                var distance = Vector3.Distance(biasedPlayerPosition, transform.position);
                 if (distance < minDistance)
                 {
                     minDistance = distance;
+                    closest = player.transform;
                 }
             }
         }
@@ -66,6 +62,4 @@ public class TagManager : MonoBehaviour
     public static TagManager GetTagManager() {
         return GameObject.Find("TagManager").GetComponent<TagManager>();
     }
-
-    
 }

@@ -40,7 +40,7 @@ public class Taggable : MonoBehaviour
 
     public bool TagYouAreIt(GameObject tagger)
     {
-        source.PlayOneShot(GettingTagged);
+        //  source.PlayOneShot(GettingTagged);
 
         if (powers.shield)
         {
@@ -48,7 +48,7 @@ public class Taggable : MonoBehaviour
             return (powers.shield = false);
         }
 
-        tagManager.SetWhoIsIt(gameObject);
+        TagManager.GetTagManager().SetWhoIsIt(gameObject);
         StartCoroutine(TagCooldown());
         return true;
     }
