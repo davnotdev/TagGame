@@ -27,10 +27,20 @@ public class FirstPersonMovement : MonoBehaviour
     private void Start()
     {
         speedIndicator.gameObject.SetActive(false);
+        ItIndicator.gameObject.SetActive(false);
     }
     private void Update()
     {
-            
+        //TagManager.GetTagManager().GetWhoIsIt();
+        //making YOU ARE IT ui element show up when tagged
+        if (TagManager.GetTagManager().GetWhoIsIt().CompareTag("Player"))
+        {
+            ItIndicator.gameObject.SetActive(true);
+        }
+        else//and disappear when untagged
+        {
+            ItIndicator.gameObject.SetActive(false);
+        }
     }
     //speedPowerUp goes brrr
     private void OnTriggerEnter(Collider other)
@@ -52,6 +62,8 @@ public class FirstPersonMovement : MonoBehaviour
         speedPowerUp = false;
         speedIndicator.gameObject.SetActive(false);
     }
+
+    
 
     void Awake()
     {

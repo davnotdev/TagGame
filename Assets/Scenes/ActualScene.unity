@@ -1372,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4308624792829773350, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -8979350050966474538, guid: 4cb119f32fa5040299f178c3978c9737, type: 3}
