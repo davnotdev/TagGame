@@ -14,6 +14,10 @@ public class Taggable : MonoBehaviour
 {
     private float noTagPeriod = 1.0f;
 
+    public AudioClip GettingTagged;
+    private AudioSource source; 
+
+
     [SerializeField]
     private bool canTag = false;
     private TagManager tagManager;
@@ -25,6 +29,7 @@ public class Taggable : MonoBehaviour
     void Start()
     {
         tagManager = TagManager.GetTagManager();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +40,8 @@ public class Taggable : MonoBehaviour
 
     public bool TagYouAreIt(GameObject tagger)
     {
+        source.PlayOneShot(GettingTagged);
+
         if (powers.shield)
         {
             tagger.GetComponent<PushBack>().PushMeBack(transform.position);
