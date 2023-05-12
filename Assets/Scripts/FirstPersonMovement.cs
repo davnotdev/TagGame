@@ -9,9 +9,11 @@ public class FirstPersonMovement : MonoBehaviour
     public float speedIncrease = 5;
     public bool speedPowerUp = false;
     public float speedCooldown = 5;
+
     public GameObject speedIndicator;
     public GameObject shieldIndicator;
     public GameObject ItIndicator;
+
     public AudioClip shieldpowerupSound;
     public AudioClip speedpowerupSound;
     public AudioClip shieldPowerupSound;

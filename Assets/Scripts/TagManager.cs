@@ -25,10 +25,7 @@ public class TagManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (player.name == whoIsIt.name)
-        {
-
-        }*/
+        
     }
 
     public Transform FindNearestPlayer(Transform transform)
