@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +9,9 @@ public class FirstPersonMovement : MonoBehaviour
     public float speedIncrease = 5;
     public bool speedPowerUp = false;
     public float speedCooldown = 5;
-    public AudioClip shieldPowerupSound;
-    public AudioClip speedPowerupSound;
-    private AudioSource source;
+    public GameObject speedIndicator;
+    public GameObject shieldIndicator;
+    public GameObject ItIndicator;
 
     [Header("Running")]
     public bool canRun = true;
@@ -24,6 +24,10 @@ public class FirstPersonMovement : MonoBehaviour
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
+    private void Start()
+    {
+        speedIndicator.gameObject.SetActive(false);
+    }
     private void Update()
     {
             
@@ -31,36 +35,28 @@ public class FirstPersonMovement : MonoBehaviour
     //speedPowerUp goes brrr
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Powerup"))
+        if (other.CompareTag("Powerup") && speedPowerUp == false)
         {
             speedPowerUp = true;
             Destroy(other.gameObject);
             speed += speedIncrease;
+            speedIndicator.gameObject.SetActive(true);
             StartCoroutine(SpeedPowerUpCountdownRoutine());
-            source.PlayOneShot(speedPowerupSound);
         }
+        
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Shield"))
-        {
-            source.PlayOneShot(shieldPowerupSound);
-        }
-    }
-
     IEnumerator SpeedPowerUpCountdownRoutine()
     {
         yield return new WaitForSeconds(speedCooldown);
         speed -= speedIncrease;
         speedPowerUp = false;
+        speedIndicator.gameObject.SetActive(false);
     }
 
     void Awake()
     {
         // Get the rigidbody on this.
         rigidbody = GetComponent<Rigidbody>();
-        source = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
