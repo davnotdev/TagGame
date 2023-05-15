@@ -32,7 +32,10 @@ public class Taggable : MonoBehaviour
     {
         tagManager = TagManager.GetTagManager();
         source = GetComponent<AudioSource>();
-        shieldIndicator.gameObject.SetActive(false);
+        if(shieldIndicator) 
+        {
+            shieldIndicator.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -48,7 +51,10 @@ public class Taggable : MonoBehaviour
         if (powers.shield)
         {
             tagger.GetComponent<PushBack>().PushMeBack(transform.position);
-            shieldIndicator.gameObject.SetActive(false);
+            if(shieldIndicator)
+            {
+                shieldIndicator.gameObject.SetActive(false);
+            }
             return (powers.shield = false);
         }
 
@@ -69,7 +75,10 @@ public class Taggable : MonoBehaviour
         {
             ObtainShield();
             Destroy(collision.gameObject);
-            shieldIndicator.gameObject.SetActive(true);
+            if(shieldIndicator) 
+            {
+                shieldIndicator.gameObject.SetActive(true);
+            }
         }
 
         /* if (!canTag && collision.gameObject.CompareTag("Speed")) */
