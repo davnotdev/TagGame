@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public float spawnRate = 6;
     private int spawnRange = 18;
     private float topSpawnRange = 4.5f;
+
+    private float timer = 30;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +62,13 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(powerUpPrefabs[powerUpIndex], new Vector3(Random.Range(topSpawnRange, -topSpawnRange), 6.1f, Random.Range(topSpawnRange, -topSpawnRange)), powerUpPrefabs[powerUpIndex].transform.rotation);
         }
+    }
+
+    //timer ahhh
+    private void FixedUpdate()
+    {
+        timer -= Time.deltaTime;
+        Debug.Log(timer);
+        //link timer to TimerUi element
     }
 }

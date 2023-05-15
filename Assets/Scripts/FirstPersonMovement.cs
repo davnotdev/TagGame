@@ -11,7 +11,7 @@ public class FirstPersonMovement : MonoBehaviour
     public float speedCooldown = 5;
 
     public GameObject speedIndicator;
-    public GameObject shieldIndicator;
+    
     public GameObject ItIndicator;
 
     public AudioClip shieldpowerupSound;
