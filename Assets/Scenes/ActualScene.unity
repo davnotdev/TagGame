@@ -1641,6 +1641,7 @@ MonoBehaviour:
   - {fileID: 9214212095587532071, guid: 170cee13b9dae4109adef8675da0b9d4, type: 3}
   startDelay: 0
   spawnRate: 6
+  TextTimerUI: {fileID: 37647514}
 --- !u!4 &1945194880
 Transform:
   m_ObjectHideFlags: 0

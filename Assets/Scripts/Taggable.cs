@@ -7,7 +7,7 @@ struct Powers
     public bool speed;
     public bool shield;
 
-    static float speedDuration = 10.0f;
+    //static float speedDuration = 10.0f;
 }
 
 public class Taggable : MonoBehaviour
