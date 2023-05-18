@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/aScenes Quickgrab/MenuScene.unity
+    guid: a90b5a520a8494a3ab5f2f41c19cd0c1
+  - enabled: 1
+    path: Assets/aScenes Quickgrab/ActualScene.unity
+    guid: 071360ffc1a8d467e91a7c0d25919959
   m_configObjects: {}

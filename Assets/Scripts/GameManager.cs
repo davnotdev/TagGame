@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(MenuManager.inst);
+        timer = MenuManager.inst.beginTime;
+
         List<GameObject> taggables = new List<GameObject>();
         var tagManager = TagManager.GetTagManager();
 
@@ -73,7 +76,6 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         timer -= (Time.deltaTime);
-        Debug.Log(timer);
         timerDisplay = Mathf.RoundToInt(timer);
         TextTimerUI.text = timerDisplay.ToString();
     }
