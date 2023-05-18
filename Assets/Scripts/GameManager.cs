@@ -77,4 +77,13 @@ public class GameManager : MonoBehaviour
         timerDisplay = Mathf.RoundToInt(timer);
         TextTimerUI.text = timerDisplay.ToString();
     }
+
+    public void endGame()
+    {
+        if(timerDisplay == 0)
+        {
+            timer = 0;
+
+        }
+    }
 }
