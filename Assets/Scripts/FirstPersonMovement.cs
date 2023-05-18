@@ -11,7 +11,6 @@ public class FirstPersonMovement : MonoBehaviour
     public float speedCooldown = 5;
 
     public GameObject speedIndicator;
-    
     public GameObject ItIndicator;
 
     public AudioClip shieldpowerupSound;
@@ -19,6 +18,11 @@ public class FirstPersonMovement : MonoBehaviour
     public AudioClip shieldPowerupSound;
     public AudioClip speedPowerupSound;
     private AudioSource source;
+
+    private float xRightBound = 19;
+    private float xLeftBound = -18.12f;
+    private float zBottomBound = -18.89f;
+    private float zTopBound = 18.235f;
 
     [Header("Running")]
     public bool canRun = true;
@@ -47,6 +51,27 @@ public class FirstPersonMovement : MonoBehaviour
         else//and disappear when untagged
         {
             ItIndicator.gameObject.SetActive(false);
+        }
+
+        //don't fall off
+        if(transform.position.x > xRightBound)
+        {
+            transform.position = new Vector3(xRightBound, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x < xLeftBound)
+        {
+            transform.position = new Vector3(xLeftBound, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.z < zBottomBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBottomBound);
+        }
+
+        if (transform.position.z > zTopBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zTopBound);
         }
     }
     //speedPowerUp goes brrr
