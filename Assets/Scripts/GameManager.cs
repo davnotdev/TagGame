@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI TextTimerUI;
     //this is hell
     public float timer = 30;
+    public int timerDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         timer -= (Time.deltaTime);
         Debug.Log(timer);
-        TextTimerUI.text = timer.ToString();
+        timerDisplay = Mathf.RoundToInt(timer);
+        TextTimerUI.text = timerDisplay.ToString();
     }
 }
