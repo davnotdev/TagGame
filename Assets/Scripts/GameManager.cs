@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject player;
-    public BoxCollider ground; 
+    public BoxCollider ground;
 
     public GameObject[] powerUpPrefabs;
     public float startDelay = 0;
@@ -22,11 +22,19 @@ public class GameManager : MonoBehaviour
     public float timer = 30;
     public int timerDisplay;
 
+    public bool isGameOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(MenuManager.inst);
-        timer = MenuManager.inst.beginTime;
+        if (MenuManager.inst)
+        {
+            timer = MenuManager.inst.beginTime;
+        }
+        else
+        {
+            timer = 5.0f;
+        }
 
         List<GameObject> taggables = new List<GameObject>();
         var tagManager = TagManager.GetTagManager();
@@ -56,7 +64,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void spawnPowerUp()
@@ -66,7 +74,8 @@ public class GameManager : MonoBehaviour
         if (locationSet != 4)
         {
             Instantiate(powerUpPrefabs[powerUpIndex], new Vector3(Random.Range(spawnRange, -spawnRange), 1.04f, Random.Range(spawnRange, -spawnRange)), powerUpPrefabs[powerUpIndex].transform.rotation);
-        } else if (locationSet == 4)
+        }
+        else if (locationSet == 4)
         {
             Instantiate(powerUpPrefabs[powerUpIndex], new Vector3(Random.Range(topSpawnRange, -topSpawnRange), 6.1f, Random.Range(topSpawnRange, -topSpawnRange)), powerUpPrefabs[powerUpIndex].transform.rotation);
         }
@@ -75,17 +84,21 @@ public class GameManager : MonoBehaviour
     //timer ahhh
     private void FixedUpdate()
     {
-        timer -= (Time.deltaTime);
-        timerDisplay = Mathf.RoundToInt(timer);
+        if (!isGameOver)
+        {
+            timer -= (Time.deltaTime);
+            timerDisplay = Mathf.RoundToInt(timer);
+            TryEndGame();
+        }
         TextTimerUI.text = timerDisplay.ToString();
     }
 
-    public void endGame()
+    public void TryEndGame()
     {
-        if(timerDisplay == 0)
+        if (timerDisplay <= 0.0f)
         {
             timer = 0;
-
+            isGameOver = true;
         }
     }
 }
