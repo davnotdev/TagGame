@@ -89,6 +89,8 @@ public class Taggable : MonoBehaviour
         Taggable other;
         if (canTag && (other = collision.gameObject.GetComponent<Taggable>()))
         {
+            source.PlayOneShot(GettingTagged);
+
             if (other.TagYouAreIt(gameObject))
             {
                 canTag = false;
