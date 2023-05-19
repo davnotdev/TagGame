@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     //public GameObject timerText;
     public TextMeshProUGUI TextTimerUI;
     //this is hell
-    public float timer = 30;
+    public float timer;
     public int timerDisplay;
 
     public bool isGameOver = false;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            timer = 5.0f;
+            //timer = 5.0f;
         }
 
         List<GameObject> taggables = new List<GameObject>();
@@ -117,12 +117,12 @@ public class GameManager : MonoBehaviour
             if (TagManager.GetTagManager().GetWhoIsIt().CompareTag("Player"))
             {
                 gameOverText.color = Color.red;
-                gameOverText.text = "Game ended, you got taged.";
+                gameOverText.text = "Game ended, you got tagged.";
             }
             else
             {
                 gameOverText.color = Color.green;
-                gameOverText.text = "Game ended, you no got taged.";
+                gameOverText.text = "Game ended, you were not tagged!";
             }
 
             gameOverOverlay.SetActive(true);
