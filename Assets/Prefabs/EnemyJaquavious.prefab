@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886ce4e0eb991ff7d973bf4920095cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldIndicator: {fileID: 0}
   GettingTagged: {fileID: 8300000, guid: 60b1a43bc438d499189a06cf29dff222, type: 3}
   canTag: 0
 --- !u!54 &-1513160890927773329

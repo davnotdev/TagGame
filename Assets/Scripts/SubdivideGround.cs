@@ -21,7 +21,7 @@ public class SubdivideGround : MonoBehaviour
         {
             for (int yI = 0; yI < N + 1; yI++)
             {
-                var p = origin + new Vector3(xI * xDiv, 0.0f, yI * yDiv);
+                var p = origin + new Vector3(xI * xDiv, transform.position.y, yI * yDiv);
                 points.Add(p);
             }
         }
