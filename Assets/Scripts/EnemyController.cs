@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour
     private Taggable taggable;
     private TagManager tagManager;
 
+    private Renderer renderer;
+
     private Vector3 lastGotoPoint;
 
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class EnemyController : MonoBehaviour
         tagManager = TagManager.GetTagManager();
         navAgent = GetComponent<NavMeshAgent>();
         taggable = GetComponent<Taggable>();
+        renderer = GetComponent<Renderer>();
         lastGotoPoint = transform.position;
     }
 
@@ -32,6 +35,8 @@ public class EnemyController : MonoBehaviour
 
         if (taggable.GetCanTag())
         {
+            renderer.material.SetColor("_Color", Color.red);
+
             navAgent.speed = speed;
             var closest = tagManager.FindNearestPlayer(transform);
             navAgent.SetDestination(closest.position + Vector3.up);
@@ -39,6 +44,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            renderer.material.SetColor("_Color", Color.white);
+
             var nonVerticalLastGotoPoint = new Vector3(lastGotoPoint.x, 0.0f, lastGotoPoint.z);
             var nonVerticalPosition = new Vector3(transform.position.x, 0.0f, transform.position.z);
             if (Vector3.Distance(nonVerticalLastGotoPoint, nonVerticalPosition) < 2.0f)
