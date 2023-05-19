@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 //using UnityEngine.UI;
 
@@ -23,6 +24,13 @@ public class GameManager : MonoBehaviour
     public int timerDisplay;
 
     public bool isGameOver = false;
+
+    public GameObject shieldIndicator;
+    public GameObject speedIndicator;
+    public GameObject itIndicator;
+
+    public TextMeshProUGUI gameOverText;
+    public GameObject gameOverOverlay;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +77,9 @@ public class GameManager : MonoBehaviour
 
     void spawnPowerUp()
     {
+        if (isGameOver)
+            return;
+
         int powerUpIndex = Random.Range(0, powerUpPrefabs.Length);
         int locationSet = Random.Range(1, 5);
         if (locationSet != 4)
@@ -99,6 +110,34 @@ public class GameManager : MonoBehaviour
         {
             timer = 0;
             isGameOver = true;
+            itIndicator.gameObject.SetActive(false);
+            speedIndicator.gameObject.SetActive(false);
+            shieldIndicator.gameObject.SetActive(false);
+
+            if (TagManager.GetTagManager().GetWhoIsIt().CompareTag("Player"))
+            {
+                gameOverText.color = Color.red;
+                gameOverText.text = "Game ended, you got taged.";
+            }
+            else
+            {
+                gameOverText.color = Color.green;
+                gameOverText.text = "Game ended, you no got taged.";
+            }
+
+            gameOverOverlay.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    static public GameManager GetGameManager()
+    {
+        return GameObject.Find("gameManager").GetComponent<GameManager>();
     }
 }

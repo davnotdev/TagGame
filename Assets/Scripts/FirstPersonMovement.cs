@@ -42,6 +42,9 @@ public class FirstPersonMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.GetGameManager().isGameOver) 
+            return;
+
         //TagManager.GetTagManager().GetWhoIsIt();
         //making YOU ARE IT ui element show up when tagged
         if (TagManager.GetTagManager().GetWhoIsIt().CompareTag("Player"))

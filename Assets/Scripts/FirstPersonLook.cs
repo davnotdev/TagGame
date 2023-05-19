@@ -25,6 +25,8 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.GetGameManager().isGameOver)
+            return;
 
         //Debug.LogFormat("here");
         // Get smooth velocity.
