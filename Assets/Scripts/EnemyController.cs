@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
     public float speed = 0.5f;
+
+    const float verticalBias = 1.3f;
 
     private NavMeshAgent navAgent;
     private Taggable taggable;
@@ -38,7 +39,9 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(lastGotoPoint, transform.position) < 5.0f)
+            var nonVerticalLastGotoPoint = new Vector3(lastGotoPoint.x, 0.0f, lastGotoPoint.z);
+            var nonVerticalPosition = new Vector3(transform.position.x, 0.0f, transform.position.z);
+            if (Vector3.Distance(nonVerticalLastGotoPoint, nonVerticalPosition) < 2.0f)
             {
                 var taggerPosition = tagManager.GetWhoIsIt().transform.position;
                 var dst = EnemyController.FindBestDestination(taggerPosition);
@@ -79,6 +82,7 @@ public class EnemyController : MonoBehaviour
         foreach (var pepperoni in pepperonis)
         {
             var val = (Vector3.Dot(taggerPosition.normalized, pepperoni.normalized) * -1 + 1) / 2;
+            val += Mathf.Abs(pepperoni.y * verticalBias);
             pepperonisWeights.Add(val);
         }
 
@@ -93,7 +97,10 @@ public class EnemyController : MonoBehaviour
 
         for (int i = 0; i < pepperonis.Count; i++)
         {
-            zippedPepperonis.Add((pepperonisWeights[i], pepperonis[i]));
+            var weight = pepperonisWeights[i];
+            var pepperoni = pepperonis[i];
+            zippedPepperonis.Add((weight, pepperoni));
+            totalWeight += weight;
         }
 
         var sortedZippedPepperonis = SortArray(ref zippedPepperonis);
