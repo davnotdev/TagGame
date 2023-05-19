@@ -42,20 +42,6 @@ public class FirstPersonMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (GameManager.GetGameManager().isGameOver) 
-            return;
-
-        //TagManager.GetTagManager().GetWhoIsIt();
-        //making YOU ARE IT ui element show up when tagged
-        if (TagManager.GetTagManager().GetWhoIsIt().CompareTag("Player"))
-        {
-            ItIndicator.gameObject.SetActive(true);
-        }
-        else//and disappear when untagged
-        {
-            ItIndicator.gameObject.SetActive(false);
-        }
-
         //don't fall off
         if(transform.position.x > xRightBound)
         {
@@ -75,6 +61,20 @@ public class FirstPersonMovement : MonoBehaviour
         if (transform.position.z > zTopBound)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, zTopBound);
+        }
+
+        if (GameManager.GetGameManager().isGameOver) 
+            return;
+
+        //TagManager.GetTagManager().GetWhoIsIt();
+        //making YOU ARE IT ui element show up when tagged
+        if (TagManager.GetTagManager().GetWhoIsIt().CompareTag("Player"))
+        {
+            ItIndicator.gameObject.SetActive(true);
+        }
+        else//and disappear when untagged
+        {
+            ItIndicator.gameObject.SetActive(false);
         }
     }
     //speedPowerUp goes brrr
@@ -118,6 +118,9 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.GetGameManager().isGameOver) 
+            return;
+
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
 

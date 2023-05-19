@@ -25,13 +25,19 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.GetGameManager().isGameOver)
-            return;
 
         //Debug.LogFormat("here");
         // Get smooth velocity.
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+        if (GameManager.GetGameManager().isGameOver)
+        {
+            mouseDelta = new Vector2(0.0f, 0.0f);
+        }
+
         Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
+
+
         frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
         velocity += frameVelocity;
         velocity.y = Mathf.Clamp(velocity.y, -90, 90);
