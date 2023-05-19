@@ -7,7 +7,7 @@ public class SubdivideGround : MonoBehaviour
     BoxCollider ground;
     List<Vector3> points;
 
-    const int N = 10;
+    const int N = 15;
 
     void Start()
     {

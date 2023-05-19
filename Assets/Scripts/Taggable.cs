@@ -17,7 +17,7 @@ public class Taggable : MonoBehaviour
     public GameObject shieldIndicator;
 
     public AudioClip GettingTagged;
-    private AudioSource source; 
+    private AudioSource source;
 
 
     [SerializeField]
@@ -32,7 +32,7 @@ public class Taggable : MonoBehaviour
     {
         tagManager = TagManager.GetTagManager();
         source = GetComponent<AudioSource>();
-        if(shieldIndicator) 
+        if (shieldIndicator)
         {
             shieldIndicator.gameObject.SetActive(false);
         }
@@ -51,7 +51,7 @@ public class Taggable : MonoBehaviour
         if (powers.shield)
         {
             tagger.GetComponent<PushBack>().PushMeBack(transform.position);
-            if(shieldIndicator)
+            if (shieldIndicator)
             {
                 shieldIndicator.gameObject.SetActive(false);
             }
@@ -69,23 +69,22 @@ public class Taggable : MonoBehaviour
         canTag = true;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (!canTag && collision.gameObject.CompareTag("Shield"))
         {
             ObtainShield();
             Destroy(collision.gameObject);
-            if(shieldIndicator) 
+            if (shieldIndicator)
             {
                 shieldIndicator.gameObject.SetActive(true);
             }
         }
 
-        /* if (!canTag && collision.gameObject.CompareTag("Speed")) */
-        /* { */
-        /*     ObtainSpeed(); */
-        /* } */
+    }
 
+    void OnCollisionEnter(Collision collision)
+    {
         Taggable other;
         if (canTag && (other = collision.gameObject.GetComponent<Taggable>()))
         {

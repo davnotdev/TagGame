@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     public float speed = 0.5f;
 
-    const float verticalBias = 1.3f;
+    const float verticalBias = 1.1f;
 
     private NavMeshAgent navAgent;
     private Taggable taggable;
