@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //timer = 5.0f;
+            timer = 5.0f;
         }
 
         List<GameObject> taggables = new List<GameObject>();

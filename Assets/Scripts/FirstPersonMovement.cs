@@ -29,7 +29,7 @@ public class FirstPersonMovement : MonoBehaviour
     public bool IsRunning { get; private set; }
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
-    
+
 
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
@@ -43,7 +43,7 @@ public class FirstPersonMovement : MonoBehaviour
     private void Update()
     {
         //don't fall off
-        if(transform.position.x > xRightBound)
+        if (transform.position.x > xRightBound)
         {
             transform.position = new Vector3(xRightBound, transform.position.y, transform.position.z);
         }
@@ -63,7 +63,7 @@ public class FirstPersonMovement : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zTopBound);
         }
 
-        if (GameManager.GetGameManager().isGameOver) 
+        if (GameManager.GetGameManager().isGameOver)
             return;
 
         //TagManager.GetTagManager().GetWhoIsIt();
@@ -89,11 +89,8 @@ public class FirstPersonMovement : MonoBehaviour
             StartCoroutine(SpeedPowerUpCountdownRoutine());
             source.PlayOneShot(speedPowerupSound);
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Shield"))
+        if (other.gameObject.CompareTag("Shield"))
         {
             source.PlayOneShot(shieldPowerupSound);
         }
@@ -107,7 +104,7 @@ public class FirstPersonMovement : MonoBehaviour
         speedIndicator.gameObject.SetActive(false);
     }
 
-    
+
 
     void Awake()
     {
@@ -118,7 +115,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameManager.GetGameManager().isGameOver) 
+        if (GameManager.GetGameManager().isGameOver)
             return;
 
         // Update IsRunning from input.
@@ -132,7 +129,7 @@ public class FirstPersonMovement : MonoBehaviour
         }
 
         // Get targetVelocity from input.
-        Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
+        Vector2 targetVelocity = new Vector2(Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
 
         // Apply movement.
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
