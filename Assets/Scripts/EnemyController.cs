@@ -30,8 +30,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.GetGameManager().isGameOver)
+        if(GameManager.GetGameManager().isGameOver) 
+        {
+            navAgent.enabled = false;
             return;
+        }
 
         if (taggable.GetCanTag())
         {
