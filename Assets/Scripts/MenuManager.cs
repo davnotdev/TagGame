@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
     public void BeginGame(float beginTime)
     {
         inst.beginTime = beginTime;
-        inst.transform.parent = null;
+        inst.transform.SetParent(null);
         DontDestroyOnLoad(inst.gameObject);
         SceneManager.LoadScene("ActualScene");
     }
